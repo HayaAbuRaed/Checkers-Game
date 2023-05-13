@@ -1,7 +1,7 @@
 import pygame
 import sys
-from checkers.standards import WIDTH, HEIGHT, BROWN
-from checkers.board import Board
+from checkers.standards import WIDTH, HEIGHT, SQ_SIZE
+from checkers.game import Game
 
 GAME = pygame.display.set_mode ((WIDTH , HEIGHT))
 pygame.display.set_caption('Checkers Game')
@@ -10,7 +10,16 @@ def main ():
     run = True
     
     clock =  pygame.time.Clock() # to make sure that the game will run at the same speed in all computers, no mater how fast the cpu is
-    board = Board()  #crate new Board object
+    game = Game(GAME)
+    
+    # piece = board.get_piece(0,1)
+    
+    
+    def get_position_from_mouse(position):
+        x,y = position
+        row = y // SQ_SIZE
+        col = x // SQ_SIZE
+        return row, col
      
     while run:
         clock.tick(60)
@@ -25,10 +34,10 @@ def main ():
             
             # event: clicking any square in the board
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print("h")
+                position = pygame.mouse.get_pos()
+                row, col = get_position_from_mouse(position)
                
-        board.draw_board(GAME)
-        pygame.display.update()
+        game.update()
                
     #  run = false 
     pygame.quit()

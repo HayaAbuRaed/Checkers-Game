@@ -7,7 +7,6 @@ from .piece import Piece
 class Board:
     def __init__(self):
         self.board = []
-        self.selectd_square = None
         self.black_checkers = self.white_checkers = 12 
         self.black_kings = self.white_kings = 0
         self.create_board()
@@ -44,3 +43,21 @@ class Board:
                 checker = self.board[row][col]
                 if checker != 0:
                     checker.draw_piece(game)
+                    
+    
+    def move(self, piece, row, col):
+        # swap
+        self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
+        piece.move(row, col)
+        
+        if row == ROWS or row == 0:
+            piece.switch_to_king()
+            if piece.color == WHITE:
+                self.white_kings +=1
+            else:
+                self.black_kings +=1
+                
+    def get_piece(self, row, col):
+        return self.board[row][col]
+    
+    

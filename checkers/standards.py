@@ -1,7 +1,7 @@
 import pygame
 
 # sizes
-WIDTH, HEIGHT = 800, 800
+WIDTH, HEIGHT = 770, 770
 COLS, ROWS = 8, 8
 
 # squares:
@@ -15,3 +15,6 @@ BLACK = (0, 0, 0)
 BROWN = (64, 51, 10)
 OFFWHITE = (234, 215, 155)
 GREEN = (15, 156, 13)
+
+# crown
+CROWN = pygame.transform.scale(pygame.image.load('C:/Users/Lenovo/Desktop/checkers game/Checkers-Game/assets/crown2.png'), (44,25))

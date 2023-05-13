@@ -2,7 +2,7 @@
 # black pieces direction: up   (-1) 
 
 import pygame
-from .standards import WHITE, BLACK, SQ_SIZE
+from .standards import WHITE, BLACK, SQ_SIZE, CROWN
 
 class Piece:
     def __init__(self, color, row, col):
@@ -10,7 +10,7 @@ class Piece:
        self.row = row
        self.col = col
        self.king = False #is it a king piece?
-       
+       False
        if self.color == WHITE :
            self.direction = -1 #up
        else:
@@ -27,12 +27,14 @@ class Piece:
     def switch_to_king(self):
         self.king = True
     
-    ########### COME BACK #############
     def draw_piece(self, surface):
         pygame.draw.circle(surface, (179, 187, 179), (self.x+2, self.y+1), 35+1 )
         pygame.draw.circle(surface, self.color, (self.x, self.y), 35)
+        if self.king:
+            surface.blit(CROWN, (self.x - CROWN.get_width() // 2, self.y - CROWN.get_height() // 2))
         
-    # def __repr__(self):
-    #     return str(self.color)       
-       
     
+    def move(self, row, col):
+        self.row = row
+        self.col = col
+        self.clac_position()
