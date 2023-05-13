@@ -11,10 +11,6 @@ class Piece:
        self.col = col
        self.king = False #is it a king piece?
        False
-       if self.color == WHITE :
-           self.direction = -1 #up
-       else:
-           self.direction = 1 #down
         
        self.x = 0
        self.y = 0

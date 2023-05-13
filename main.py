@@ -12,9 +12,6 @@ def main ():
     clock =  pygame.time.Clock() # to make sure that the game will run at the same speed in all computers, no mater how fast the cpu is
     game = Game(GAME)
     
-    # piece = board.get_piece(0,1)
-    
-    
     def get_position_from_mouse(position):
         x,y = position
         row = y // SQ_SIZE
@@ -23,6 +20,10 @@ def main ():
      
     while run:
         clock.tick(60)
+        
+        if game.winner() != None:
+            print(game.winner())
+            run = False
         
         # check for an event 
         for event in pygame.event.get():
@@ -36,6 +37,7 @@ def main ():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 position = pygame.mouse.get_pos()
                 row, col = get_position_from_mouse(position)
+                game.select(row,col)
                
         game.update()
                

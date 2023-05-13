@@ -50,7 +50,7 @@ class Board:
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
         piece.move(row, col)
         
-        if row == ROWS or row == 0:
+        if row == ROWS - 1 or row == 0:
             piece.switch_to_king()
             if piece.color == WHITE:
                 self.white_kings +=1
@@ -59,5 +59,116 @@ class Board:
                 
     def get_piece(self, row, col):
         return self.board[row][col]
+    
+    def valid_moves(self,checker):
+        # moves store every move that the player can do as: (row, col)
+        moves = {}
+        left = checker.col - 1 
+        right = checker.col + 1
+        row = checker.row
+        
+        if checker.color == WHITE or checker.king:
+            # start = the row above the current row we are at
+            # stop = the num of lines we are looking at [(row-3) indicates that we are seeing only tow steps]
+            moves.update(self._move_left(row -1, max(row-3, -1), -1, checker.color, left))
+            moves.update(self._move_right(row -1, max(row-3, -1), -1, checker.color, right))
+            
+        if checker.color == BLACK or checker.king:
+            moves.update(self._move_left(row +1, min(row+3, ROWS), 1, checker.color, left))
+            moves.update(self._move_right(row +1, min(row+3, ROWS), 1, checker.color, right))
+            
+        return moves
+    # step: indicates direction (up or down)
+    # skipped: this will tell us that we killed a checker, and can do another move to kill another one if any
+    def _move_left(self, start, stop, step, color, left, skipped=[]):
+        moves = {}
+        last = []
+        for checker_row in range(start, stop, step):
+            # condition: we're looking outside of the board
+            if left < 0:
+                break
+            
+            current = self.board[checker_row][left]
+            #IF1 - means no checker on the square we're looking at
+            if current == 0:
+                if skipped and not last:
+                    break
+                elif skipped:
+                    moves[(checker_row, left)] = last + skipped
+                else:
+                    moves[(checker_row, left)] = last
+                
+                if last:
+                    if step == -1:
+                        row = max(checker_row - 3, 0)
+                    else:
+                        row = min(checker_row+3, ROWS)
+                    moves.update(self._move_left(checker_row+step, row, step, color, left-1,skipped=last))
+                    moves.update(self._move_right(checker_row+step, row, step, color, left+1,skipped=last))
+                break
+            
+            # IF1 - means that we found a checker on the square and it is one of ours (ours = the player that is currently playing)
+            elif current.color == color:
+                break
+            
+            #IF1 - means that means that we found a checker on the square we're checking and it is one of the opponent's checkers
+            #We put the current value in the last array indicating that it might be followed by an empty square so we can jump into
+            else:
+                last = [current]
+
+            left -= 1
+        
+        return moves
+
+    def _move_right(self, start, stop, step, color, right, skipped=[]):
+        moves = {}
+        last = []
+        for checker_row in range(start, stop, step):
+            if right >= COLS:
+                break
+            
+            current = self.board[checker_row][right]
+            if current == 0:
+                if skipped and not last:
+                    break
+                elif skipped:
+                    moves[(checker_row,right)] = last + skipped
+                else:
+                    moves[(checker_row, right)] = last
+                
+                if last:
+                    if step == -1:
+                        row = max(checker_row - 3, 0)
+                    else:
+                        row = min(checker_row + 3, ROWS)
+                    moves.update(self._move_left(checker_row + step, row, step, color, right-1,skipped=last))
+                    moves.update(self._move_right(checker_row + step, row, step, color, right+1,skipped=last))
+                break
+            elif current.color == color:
+                break
+            else:
+                last = [current]
+
+            right += 1
+        
+        return moves
+    
+    
+    def remove(self, pieces):
+        for piece in pieces:
+            self.board[piece.row][piece.col] = 0
+            if piece != 0:
+                if piece.color == WHITE:
+                    self.white_checkers -= 1
+                else:
+                    self.black_checkers -= 1
+    
+    def winner(self):
+        if self.white_checkers <= 0:
+            return WHITE
+        elif self.black_checkers <= 0:
+            return BLACK
+        
+        return None
     
     
