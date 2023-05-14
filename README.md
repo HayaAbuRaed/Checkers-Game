@@ -1,6 +1,6 @@
 # Checkers Game with Minimax Algorithm
 This is a Checkers game programmed in Python, with the implementation of the Minimax Algorithm. The game is built with Pygame library to provide a graphical user interface (GUI) that enhances the user experience.
-
+<br/><br/>
 ## ⚡ About the Game
 Checkers, also known as Draughts, is a two-player board game played on a standard 8x8 checkered game board. The objective of the game is to capture all of your opponent's pieces or to block them so they cannot make any more moves.
 
@@ -19,7 +19,7 @@ In Checkers, there are two types of moves: non-capturing moves and capturing mov
 ○ Kinging: If a piece reaches the last row of the opponent's side of the board, it is promoted to a king. A king can move diagonally forward or backward and can make capturing moves in both directions.
 
 ○ Forced capturing move: If a player has multiple capturing moves available, they must choose the move that captures the most pieces.
-
+<br/><br/>
 
 ## 📄 Installation
 To install the game on your system, follow these steps:
@@ -27,10 +27,12 @@ To install the game on your system, follow these steps:
 Clone the repository to your local machine using git clone https://github.com/[HayaAbuRaed]/Checkers-Game.git
 Navigate to the cloned repository using the command cd checkers-minimax
 Install the dependencies required for the project using the command pip install (pip install pygame)
+<br/><br/>
 
 ## 🚀 Usage
 To start the game, navigate to the cloned repository on your local machine and run the main.py file using the command python main.py. You can play the game against the computer and enjoy the optimized gameplay experience with Pygame graphics.
-
+<br/><br/>
 
 ## 🎮 Gameplay
 The game is played according to standard Checkers rules. The player can move their pieces diagonally and capture the opponent's pieces by jumping over them. The game continues until one player has no pieces left on the board or is unable to make a move. The Minimax Algorithm is used to provide an optimized gameplay experience, which makes the game challenging and fun to play.
+<br/><br/>
