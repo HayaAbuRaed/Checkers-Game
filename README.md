@@ -1,6 +1,12 @@
 # Checkers Game with Minimax Algorithm
 This is a Checkers game programmed in Python, with the implementation of the Minimax Algorithm. The game is built with Pygame library to provide a graphical user interface (GUI) that enhances the user experience.
 <br/><br/>
+
+<p align="center">
+  <img src="https://github.com/HayaAbuRaed/Checkers-Game/assets/123592435/a1c3da71-b563-4f3a-826f-484f8d0369e2" alt="example image" width="500">
+</p>
+<br/><br/>
+
 ## ⚡ About the Game
 Checkers, also known as Draughts, is a two-player board game played on a standard 8x8 checkered game board. The objective of the game is to capture all of your opponent's pieces or to block them so they cannot make any more moves.
 
