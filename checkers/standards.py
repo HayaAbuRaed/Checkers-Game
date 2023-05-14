@@ -18,4 +18,4 @@ GREEN = (15, 156, 13)
 BLUE = (51, 92, 232)
 
 # crown
-CROWN = pygame.transform.scale(pygame.image.load('C:/Users/Lenovo/Desktop/checkers game/Checkers-Game/assets/crown2.png'), (44,25))
+CROWN = pygame.transform.scale(pygame.image.load('../assets/crown2.png'), (44,25))
