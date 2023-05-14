@@ -10,15 +10,15 @@ In Checkers, there are two types of moves: non-capturing moves and capturing mov
 
   ### Valid moves:
 
-○ Non-capturing move: A piece moves one square diagonally forward to an adjacent empty square.
+• Non-capturing move: A piece moves one square diagonally forward to an adjacent empty square.
 
-○ Capturing move: A piece jumps over an opponent's piece to capture it and lands on an empty square. The jump can be in any diagonal direction as long as there is an opponent's piece to be captured and an empty square to land on after the capture.
+• Capturing move: A piece jumps over an opponent's piece to capture it and lands on an empty square. The jump can be in any diagonal direction as long as there is an opponent's piece to be captured and an empty square to land on after the capture.
 
-○ Double capture move: If a capturing move results in the player's piece landing in a position to make another capture, then the player must continue to make capturing moves until they can no longer do so.
+• Double capture move: If a capturing move results in the player's piece landing in a position to make another capture, then the player must continue to make capturing moves until they can no longer do so.
 
-○ Kinging: If a piece reaches the last row of the opponent's side of the board, it is promoted to a king. A king can move diagonally forward or backward and can make capturing moves in both directions.
+• Kinging: If a piece reaches the last row of the opponent's side of the board, it is promoted to a king. A king can move diagonally forward or backward and can make capturing moves in both directions.
 
-○ Forced capturing move: If a player has multiple capturing moves available, they must choose the move that captures the most pieces.
+• Forced capturing move: If a player has multiple capturing moves available, they must choose the move that captures the most pieces.
 <br/><br/>
 
 ## 📄 Installation
