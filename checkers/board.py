@@ -165,10 +165,20 @@ class Board:
     
     def winner(self):
         if self.white_checkers <= 0:
-            return WHITE
+            return "BLACK"
         elif self.black_checkers <= 0:
-            return BLACK
+            return "WHITE"
         
         return None
     
-    
+    ################## AI ######################
+    def evaluate(self):
+        return self.black_checkers - self.white_checkers + (self.black_kings * 0.5 - self.white_kings * 0.5)
+
+    def get_checkers_of_color(self, color):
+        checkers = []
+        for row in self.board:
+            for checker in row:
+                if checker != 0 and checker.color == color:
+                    checkers.append(checker)
+        return checkers
