@@ -24,7 +24,7 @@ In Checkers, there are two types of moves: non-capturing moves and capturing mov
 ## 📄 Installation
 To install the game on your system, follow these steps:
 
-Clone the repository to your local machine using git clone https://github.com/[HayaAbuRaed]/Checkers-Game.git
+Clone the repository to your local machine using git clone https://github.com/HayaAbuRaed/Checkers-Game.git
 Navigate to the cloned repository using the command cd checkers-minimax
 Install the dependencies required for the project using the command pip install (pip install pygame)
 <br/><br/>
